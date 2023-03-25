@@ -1,0 +1,45 @@
+.App {
+    text-align: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }  
+.app-layout {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    border: none;
+  }
+  
+  .app-layout > * {
+    padding: 1rem;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  
+  .user-column {
+    width: 50px;
+    background-color: #f0f0f0;
+  }
+  
+  .collections-column {
+    width: 200px;
+    background-color: #e0e0e0;
+  }
+  
+  .snippets-column {
+    width: 300px;
+    background-color: #d0d0d0;
+  }
+  
+  .snippet-details-column {
+    flex-grow: 1;
+    flex-basis: 0;
+    background-color: #c0c0c0;
+  }
+  
