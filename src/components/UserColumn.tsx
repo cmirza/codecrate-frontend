@@ -1,10 +1,12 @@
 import React from 'react';
+import './UserColumn.css';
+import userIcon from './user-icon.png';
 
-const UserColumn: React.FC = () => {
+const UserColumn = () => {
   return (
-    <header className="user-column">
-      <h2>User Column</h2>
-    </header>
+    <div className="user-column">
+      <img src={userIcon} alt="user icon" className="user-icon" />
+    </div>
   );
 };
 

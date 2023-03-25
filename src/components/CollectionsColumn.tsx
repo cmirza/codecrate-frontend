@@ -1,10 +1,17 @@
 import React from 'react';
+import './CollectionsColumn.css';
 
-const CollectionsColumn: React.FC = () => {
+const CollectionsColumn = () => {
+  const collections = ['Collection 1', 'Collection 2', 'Collection 3', 'Collection 4'];
+
   return (
-    <header className="collections-column">
-      <h2>Collections Column</h2>
-    </header>
+      <div className="collections-column">
+        <ul>
+          {collections.map((collection, index) => (
+            <li key={index}>{collection}</li>
+          ))}
+        </ul>
+      </div>
   );
 };
 

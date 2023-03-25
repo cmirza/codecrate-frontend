@@ -1,0 +1,20 @@
+.snippet-details-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .black-box {
+    background-color: black;
+    color: green;
+    padding: 1rem;
+    margin: 2rem 0 0 0; /* Increased top and bottom margin */
+    border-radius: 5px;
+    width: calc(100% + 2rem); /* Made it wider */
+    height: auto;
+    overflow: auto;
+  }
+  

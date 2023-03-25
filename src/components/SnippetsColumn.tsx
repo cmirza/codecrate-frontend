@@ -1,10 +1,17 @@
 import React from 'react';
+import './SnippetsColumn.css';
 
-const SnippetsColumn: React.FC = () => {
+const SnippetsColumn = () => {
+  const snippets = ['Snippet 1', 'Snippet 2', 'Snippet 3', 'Snippet 4'];
+
   return (
-    <header className="snippets-column">
-      <h2>Snippets Column</h2>
-    </header>
+      <div className="snippets-column">
+        <ul>
+          {snippets.map((snippet, index) => (
+            <li key={index}>{snippet}</li>
+          ))}
+        </ul>
+      </div>
   );
 };
 
