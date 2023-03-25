@@ -1,7 +1,7 @@
 import React from 'react';
 import './SnippetsColumn.css';
 
-const SnippetsColumn = () => {
+const SnippetsColumn: React.FC = () => {
   const snippets = ['Snippet 1', 'Snippet 2', 'Snippet 3', 'Snippet 4'];
 
   return (

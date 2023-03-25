@@ -1,7 +1,7 @@
 import React from 'react';
 import './SnippetDetailsColumn.css';
 
-const SnippetDetailsColumn = () => {
+const SnippetDetailsColumn: React.FC = () => {
   return (
     <div className="snippet-details-column">
       <div className='black-box'>

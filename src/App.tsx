@@ -4,7 +4,7 @@ import './Layout.css';
 import UserColumn from './components/UserColumn';
 import CollectionsColumn from './components/CollectionsColumn';
 import SnippetsColumn from './components/SnippetsColumn';
-import SnippetsDetailsColumn from './components/SnippetDetailsColumn';
+import SnippetDetailsColumn from './components/SnippetDetailsColumn';
 
 const App: React.FC = () => {
   return (
@@ -13,10 +13,10 @@ const App: React.FC = () => {
         <UserColumn />
         <CollectionsColumn />
         <SnippetsColumn />
-        <SnippetsDetailsColumn />
+        <SnippetDetailsColumn />
       </div>
     </div>
   );
 };
 
-export default App
+export default App;
