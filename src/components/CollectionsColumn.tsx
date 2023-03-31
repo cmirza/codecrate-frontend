@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import './CollectionsColumn.css';
 
-const CollectionsColumn: React.FC = () => {
+interface CollectionsColumnProps {
+  onCollectionSelect: (collectionName: string | null) => void;
+}
+
+const CollectionsColumn: React.FC<CollectionsColumnProps> = ({ onCollectionSelect}) => {
   const [collections, setCollections] = useState<string[]>([
     'Collection 1',
     'Collection 2',
     'Collection 3',
     'Collection 4'
   ]);
-
   const [newCollectionName, setNewCollectionName] = useState<string>('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,11 +26,17 @@ const CollectionsColumn: React.FC = () => {
     }
   };
 
+  const handleCollectionClick = (collection: string) => {
+    onCollectionSelect(collection);
+  };
+
   return (
       <div className="collections-column">
         <ul>
           {collections.map((collection, index) => (
-            <li key={index}>{collection}</li>
+            <li key={index} onClick={() => handleCollectionClick(collection)}>
+              {collection}
+            </li>
           ))}
         </ul>
         <form onSubmit={handleFormSubmit}>
