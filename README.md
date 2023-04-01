@@ -1,2 +1,5 @@
+<img src="./logo.png" alt="crage" style="width:200px;"/>
+
 # codecrate-frontend
-Frontend for CodeCrate
+
+Repository for CodeCrate frontend.
