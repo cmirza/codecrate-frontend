@@ -14,7 +14,7 @@ const SnippetsColumn: React.FC<SnippetsColumnProps> = ({ selectedCollection, set
     'Collection 4': ['Snippet 4-1', 'Snippet 4-2', 'Snippet 4-3', 'Snippet 4-4']
   });
 
-  const displayedSnippets = selectedCollection ? snippets[selectedCollection] : [];
+  const displayedSnippets = selectedCollection && snippets[selectedCollection] ? snippets[selectedCollection] : [];
   const [newSnippetName, setNewSnippetName] = useState<string>('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,9 +37,10 @@ const SnippetsColumn: React.FC<SnippetsColumnProps> = ({ selectedCollection, set
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (newSnippetName.trim() && selectedCollection) {
+      const collectionSnippets = snippets[selectedCollection] || [];
       const updatedSnippets = {
         ...snippets,
-        [selectedCollection]: [...snippets[selectedCollection], newSnippetName.trim()]
+        [selectedCollection]: [...(collectionSnippets || []), newSnippetName.trim()]
       };
       setSnippets(updatedSnippets);
       setNewSnippetName('');
