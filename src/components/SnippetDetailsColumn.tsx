@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './SnippetDetailsColumn.css';
 
 interface SnippetDetailsColumnProps {
@@ -6,7 +6,7 @@ interface SnippetDetailsColumnProps {
 }
 
 const SnippetDetailsColumn: React.FC<SnippetDetailsColumnProps> = ({ selectedSnippet }) => {
-  const snippets: Record<string, string> = {
+  const [snippets, setSnippets] = useState<Record<string, string>>({
     'Snippet 1-1': `function example1() {
   console.log('Example 1');
     }`,
@@ -55,19 +55,42 @@ const SnippetDetailsColumn: React.FC<SnippetDetailsColumnProps> = ({ selectedSni
     'Snippet 4-4': `function example16() {
   console.log('Example 16');
     }`
-  };
+  });
+
+  const [snippetContentEditable, setSnippetContentEditable] = useState<string>('');
 
   const snippetContent = selectedSnippet ? snippets[selectedSnippet] : '';
 
+  useEffect(() => {
+    setSnippetContentEditable(snippetContent);
+  }, [snippetContent]);
+
+  const handleContentEditableChange = (event: React.SyntheticEvent<HTMLDivElement>) => {
+    const updatedContent = event.currentTarget.textContent || '';
+    setSnippetContentEditable(updatedContent);
+  };
+
+  const handleSaveSnippet = () => {
+    if (selectedSnippet) {
+      const updatedSnippets = {
+        ...snippets,
+        [selectedSnippet]: snippetContentEditable
+      };
+      setSnippets(updatedSnippets);
+    }
+  };
+
   return (
     <div className="snippet-details-column">
-      <div className='black-box'>
-        <pre style={{ textAlign: 'left'}}>
-          <code>
-            {snippetContent}
-          </code>
-        </pre>
+      <div 
+        className='black-box'
+        contentEditable
+        suppressContentEditableWarning
+        onBlur={handleContentEditableChange}
+      >
+        {snippetContent}
       </div>
+        <button onClick={handleSaveSnippet}>Save</button>
     </div>
   );
 };
