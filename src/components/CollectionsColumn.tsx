@@ -3,9 +3,10 @@ import './CollectionsColumn.css';
 
 interface CollectionsColumnProps {
   onCollectionSelect: (collectionName: string | null) => void;
+  onCollectionDelete: (collectionName: string) => void;
 }
 
-const CollectionsColumn: React.FC<CollectionsColumnProps> = ({ onCollectionSelect}) => {
+const CollectionsColumn: React.FC<CollectionsColumnProps> = ({ onCollectionSelect, onCollectionDelete }) => {
   const [collections, setCollections] = useState<string[]>([
     'Collection 1',
     'Collection 2',
@@ -30,13 +31,19 @@ const CollectionsColumn: React.FC<CollectionsColumnProps> = ({ onCollectionSelec
     onCollectionSelect(collection);
   };
 
+  const handleDeleteCollection = (collectionToDelete: string) => {
+    setCollections(collections.filter(collection => collection !== collectionToDelete));
+    onCollectionDelete(collectionToDelete);
+  };
+
   return (
       <div className="collections-column">
         <ul>
           {collections.map((collection, index) => (
-            <li key={index} onClick={() => handleCollectionClick(collection)}>
-              {collection}
-            </li>
+          <li key={index}>
+            <span onClick={() => handleCollectionClick(collection)}>{collection}</span>
+            <button onClick={() => handleDeleteCollection(collection)}>X</button>
+          </li>
           ))}
         </ul>
         <form onSubmit={handleFormSubmit}>
@@ -46,7 +53,7 @@ const CollectionsColumn: React.FC<CollectionsColumnProps> = ({ onCollectionSelec
             onChange={handleInputChange}
             placeholder="New Collection Name"
           />
-          <button type="submit">Add Collection</button>
+          <button type="submit">+</button>
         </form>
       </div>
   );

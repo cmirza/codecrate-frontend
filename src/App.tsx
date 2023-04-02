@@ -14,11 +14,21 @@ const App: React.FC = () => {
     setSelectedCollection(collectionName);
   };
 
+  const handleCollectionDelete = (collectionName: string) => {
+    if (collectionName === selectedCollection) {
+      setSelectedCollection(null);
+      setSelectedSnippet(null);
+    }
+  };
+
   return (
     <div className="App">
       <div className="app-layout">
         <UserColumn />
-        <CollectionsColumn onCollectionSelect={setSelectedCollection} />
+        <CollectionsColumn
+          onCollectionSelect={setSelectedCollection}
+          onCollectionDelete={handleCollectionDelete}
+        />
         <SnippetsColumn selectedCollection={selectedCollection} setSelectedSnippet={setSelectedSnippet} />
         <SnippetDetailsColumn selectedSnippet={selectedSnippet} />
       </div>

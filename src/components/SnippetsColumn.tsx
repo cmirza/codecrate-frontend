@@ -53,7 +53,7 @@ const SnippetsColumn: React.FC<SnippetsColumnProps> = ({ selectedCollection, set
         {displayedSnippets.map((snippet, index) => (
           <li key={index}>
             <span onClick={() => setSelectedSnippet(snippet)}>{snippet}</span>
-            <button onClick={() => handleDeleteSnippet(snippet)}>Delete</button>
+            <button onClick={() => handleDeleteSnippet(snippet)}>X</button>
           </li>
         ))}
       </ul>
@@ -65,7 +65,7 @@ const SnippetsColumn: React.FC<SnippetsColumnProps> = ({ selectedCollection, set
             onChange={handleInputChange}
             placeholder="New Snippet Name"
           />
-          <button type="submit">Add Snippet</button>
+          <button type="submit">+</button>
         </form>
       )}
     </div>
