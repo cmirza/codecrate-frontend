@@ -24,6 +24,7 @@ const App: React.FC = () => {
 
   const handleCollectionSelect = (collectionName: string | null) => {
     setSelectedCollection(collectionName);
+    setSelectedSnippet(null);
   };
 
   const handleCollectionDelete = (collectionName: string) => {
@@ -38,7 +39,7 @@ const App: React.FC = () => {
       <div className="app-layout">
         <UserColumn />
         <CollectionsColumn
-          onCollectionSelect={setSelectedCollection}
+          onCollectionSelect={handleCollectionSelect}
           onCollectionDelete={handleCollectionDelete}
           collections={collections}
           setCollections={setCollections}
