@@ -4,15 +4,16 @@ import './CollectionsColumn.css';
 interface CollectionsColumnProps {
   onCollectionSelect: (collectionName: string | null) => void;
   onCollectionDelete: (collectionName: string) => void;
+  collections: string[];
+  setCollections: (collections: string[]) => void;
 }
 
-const CollectionsColumn: React.FC<CollectionsColumnProps> = ({ onCollectionSelect, onCollectionDelete }) => {
-  const [collections, setCollections] = useState<string[]>([
-    'Collection 1',
-    'Collection 2',
-    'Collection 3',
-    'Collection 4'
-  ]);
+const CollectionsColumn: React.FC<CollectionsColumnProps> = ({
+  onCollectionSelect,
+  onCollectionDelete,
+  collections,
+  setCollections
+}) => {
   const [newCollectionName, setNewCollectionName] = useState<string>('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

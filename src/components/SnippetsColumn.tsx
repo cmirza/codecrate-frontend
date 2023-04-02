@@ -4,16 +4,16 @@ import './SnippetsColumn.css';
 interface SnippetsColumnProps {
   selectedCollection: string | null;
   setSelectedSnippet: (snippet: string | null) => void;
+  snippets: Record<string, string[]>;
+  setSnippets: (snippets: Record<string, string[]>) => void;
 }
 
-const SnippetsColumn: React.FC<SnippetsColumnProps> = ({ selectedCollection, setSelectedSnippet }) => {
-  const [snippets, setSnippets] = useState<Record<string, string[]>>({
-    'Collection 1': ['Snippet 1-1', 'Snippet 1-2', 'Snippet 1-3', 'Snippet 1-4'],
-    'Collection 2': ['Snippet 2-1', 'Snippet 2-2', 'Snippet 2-3', 'Snippet 2-4'],
-    'Collection 3': ['Snippet 3-1', 'Snippet 3-2', 'Snippet 3-3', 'Snippet 3-4'],
-    'Collection 4': ['Snippet 4-1', 'Snippet 4-2', 'Snippet 4-3', 'Snippet 4-4']
-  });
-
+const SnippetsColumn: React.FC<SnippetsColumnProps> = ({
+  selectedCollection,
+  setSelectedSnippet,
+  snippets,
+  setSnippets,
+}) => {
   const displayedSnippets = selectedCollection && snippets[selectedCollection] ? snippets[selectedCollection] : [];
   const [newSnippetName, setNewSnippetName] = useState<string>('');
 
